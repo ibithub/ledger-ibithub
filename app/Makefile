@@ -54,21 +54,21 @@ $(info ************  SR25519 ENABLED ************)
 endif
 
 ifndef COIN
-COIN=DOT
+COIN=IBH
 endif
 
 include $(CURDIR)/Makefile.version
 
 $(info COIN  = [$(COIN)])
-ifeq ($(COIN),DOT)
+ifeq ($(COIN),IBH)
 # Main app configuration
 DEFINES += APP_STANDARD
-APPNAME = "Polkadot"
+APPNAME = "iBitHub"
 APPPATH = "44'/354'"  --path "44'/434'"
 
 else ifeq ($(COIN),Ledgeracio)
 DEFINES += APP_RESTRICTED
-APPNAME = "Polkadot_sec"
+APPNAME = "iBitHub_sec"
 APPPATH = "44'/354'"
 
 else
@@ -86,7 +86,7 @@ APP_LOAD_PARAMS = --appFlags 0x200 --delete $(COMMON_LOAD_PARAMS) --path $(APPPA
 
 ifeq ($(TARGET_NAME),TARGET_NANOS)
 SCRIPT_LD:=$(CURDIR)/script.ld
-ICONNAME:=$(CURDIR)/nanos_icon.gif
+ICONNAME:=nanos_icon.gif
 OUTPUT_ELF:= $(CURDIR)/output/app_s.elf
 OUTPUT_INSTALLER:= $(CURDIR)/pkg/installer_s.sh
 endif
